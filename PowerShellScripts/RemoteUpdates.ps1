@@ -1,6 +1,8 @@
-﻿.$profile
 $Machine = Read-Host "Enter Target Computer Name"
-.$psexec \\$Machine -h pwsh -command "Import-Module Bitlocker; Suspend-BitLocker -MountPoint 'C:' -RebootCount 1"
-.$psexec \\$Machine -u $u -p $p -h pwsh -command "Install-Module PSWindowsUpdate -Force; Import-Module PSWindowsUpdate; Install-WindowsUpdate -WindowsUpdate -AcceptAll -IgnoreReboot"
-.$psexec \\$Machine -u $u -p $p -h cmd /c "USOClient.exe RestartDevice"
+$Domain = Read-Host "Enter relevant domain for user logon"
+$Username = Read-Host "Enter username with required privileges for command execution" 
+Invoke-Command -ComputerName $Machine -Credential <domain>\<username to run command as> -ScriptBlock {
+     Import-Module Bitlocker; Suspend-BitLocker -MountPoint 'C:' -RebootCount 1
+     Install-Module PSWindowsUpdate -Force; Import-Module PSWindowsUpdate; Install-WindowsUpdate -WindowsUpdate -AcceptAll -IgnoreReboot
+     <# USOClient.exe RestartDevice #>
 Read-Host -Prompt “Press Enter to exit”
