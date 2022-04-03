@@ -1,6 +1,9 @@
-﻿.$profile
 $Machine = Read-Host "Enter Target Computer Name"
-.$psexec \\$Machine -h pwsh -command "Import-Module Bitlocker; Suspend-BitLocker -MountPoint 'C:' -RebootCount 1"
-.$psexec \\$Machine -h cmd /C "shutdown /r /f /t 0"
+$Domain = Read-Host "Enter relevant domain for user logon"
+$Username = Read-Host "Enter username with required privileges for command execution" 
+Invoke-Command -ComputerName $Machine -Credential <domain>\<username to run command as> -ScriptBlock {
+     Import-Module Bitlocker; Suspend-BitLocker -MountPoint 'C:' -RebootCount 1
+     shutdown /r /f /t 0
+}
 
 exit
