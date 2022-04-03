@@ -1,5 +1,8 @@
-﻿.$profile
 $Machine = Read-Host "Enter Target Computer Name"
-.$psexec \\$Machine -u $u -p $p -h powershell -command "Resume-BitLocker -MountPoint 'C:'"
+$Domain = Read-Host "Enter relevant domain for user logon"
+$Username = Read-Host "Enter username with required privileges for command execution" 
+Invoke-Command -ComputerName $Machine -Credential <domain>\<username to run command as> -ScriptBlock {
+     Resume-BitLocker -MountPoint 'C:'
+     }
 
 Read-Host -Prompt "Press Enter to exit"
