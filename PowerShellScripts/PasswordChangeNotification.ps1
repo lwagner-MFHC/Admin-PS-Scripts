@@ -36,32 +36,32 @@ param(
     # $smtpServer Enter Your SMTP Server Hostname or IP Address
     [Parameter(Mandatory=$True,Position=0)]
     [ValidateNotNull()]
-    [string]$smtpServer="mail.mountainfamily.org",
+    [string]$smtpServer="",
     # Notify Users if Expiry Less than X Days
     [Parameter(Mandatory=$True,Position=1)]
     [ValidateNotNull()]
     [int]$expireInDays=20,
-    # From Address, eg "IT Support <support@domain.com>"
+    # From Address, eg ""
     [Parameter(Mandatory=$True,Position=2)]
     [ValidateNotNull()]
-    [string]$from="Lucas Wagner <lwagner@mountainfamily.org>",
+    [string]$from="",
     [Parameter(Position=3)]
     [switch]$logging="Enabled",
     # Log File Path
     [Parameter(Position=4)]
-    [string]$logPath="\\mfhc-fs01\Share\IT\Useful_Tools\PSTools\Scripts\PasswordExpiryNotificationEmails\UserNotifications($Date).csv",
+    [string]$logPath="",
     # Testing Enabled
     [Parameter(Position=5)]
     [switch]$testing="Enabled",
     # Test Recipient, eg recipient@domain.com
     [Parameter(Position=6)]
-    [string]$testRecipient="lwagner@mountainfamily.org",
+    [string]$testRecipient="",
     # Output more detailed status to console
     [Parameter(Position=7)]
     [switch]$status,
     # Log file recipient
     [Parameter(Position=8)]
-    [string]$reportto="lwagner@mountainfamily.org",
+    [string]$reportto="",
     # Notification Interval
     [Parameter(Position=9)]
     [array]$interval =3
@@ -211,7 +211,7 @@ foreach ($user in $notifyUsers)
     Dear $name,
     <p> Good Morning,  <br>
     <p> If you have received this email, your MFHC Windows login password will expire very soon. To minimize disruption to your workflow, please go about initiating a password change when you have a free moment within the next $messageDays using one of the methods listed below:  <br>
-    <p> Method 1 (if connected to MFHCAir) : <br>
+    <p> Method 1 (if connected to ) : <br>
     <p>    1.	While logged in, press ctrl+alt+del on your keyboard. <br>
     <p>    2.	Click 'Change a Password' <br>
     <p>    3.	Type your current password in the box labeled 'Old Password'
