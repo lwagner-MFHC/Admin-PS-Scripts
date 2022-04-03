@@ -5,4 +5,5 @@ Invoke-Command -ComputerName $Machine -Credential <domain>\<username to run comm
      Import-Module Bitlocker; Suspend-BitLocker -MountPoint 'C:' -RebootCount 1
      Install-Module PSWindowsUpdate -Force; Import-Module PSWindowsUpdate; Install-WindowsUpdate -WindowsUpdate -AcceptAll -IgnoreReboot
      <# USOClient.exe RestartDevice #>
+     }
 Read-Host -Prompt “Press Enter to exit”
