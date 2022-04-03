@@ -1,2 +1,2 @@
-$Machine = Read-Host -Prompt "Target PC"
-cmd /c "gpedit.msc /gpcomputer: $Machine"
+$Machine = Read-Host "Enter Target Computer Name"
+gpedit.msc /gpcomputer: $Machine
